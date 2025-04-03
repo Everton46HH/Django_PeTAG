@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - PeTAG</title>
+        <link rel="stylesheet" href="{% static '/css/login.css' %}">
+    </head>
+
+    <body>  
+
+        <div class="container">
+
+            <div id="animal-img"></div>
+
+                <div class="overlay"></div>
+
+                    <div class="login">
+
+                        <div class="logo">
+                            <h1><span class="blue">Pe</span><span class="black">TAG</span></h1>
+                            <p>Pet Tracking & GPS</p>
+                        </div>
+
+                            <form class="login-box" action="{% url 'login' %}" method="post"> {% csrf_token %}
+                            
+                                <label for="email">Email:</label>
+                                <input type="email" placeholder="Email" name="email">
+                            
+                                <label for="senha">Senha:</label>
+                                <input type="password" placeholder="Senha" name="senha">    
+                            
+                                <input type="submit" id="submit-button" value="ENTRAR"></input>
+                             
+                                
+                                {% if messages %}
+                                {% for message in messages %}
+                                <p style="color: red;" id="p-message">{{ message }}</p>
+                                {% endfor %}
+                                {% endif %}
+
+                                
+                            </form>
+                            
+                            
+                        
+                            <p class="cadastro">Não tem uma conta? <a href="{% url 'register' %}">Cadastre-se</a></p>
+                        
+                    </div>
+
+                </div>
+
+    </body>
+</html>

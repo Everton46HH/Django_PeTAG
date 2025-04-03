@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static '/css/home.css' %}">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+
+    <title>Portfólio</title>
+  </head>
+<body>
+  <header>
+        
+        <div id="container-keyframe">
+          <!-- LOADING KEY_FRAMA -->
+          <span class="div1"></span>
+          <span class="div2"></span>
+          <span class="div3"></span>
+          
+        </div>
+        
+        <nav class="nav-bar">
+
+          <div class="logo">
+            <h1><span class="blue">Pe</span><span class="black">TAG</span></h1>
+            <p>Pet Tracking & GPS</p>
+          </div>
+
+            <div class="nav-list">
+
+              <ul>
+                <li class="nav-item" ><a href="#" class="nav-link">Oque é o projeto PeTAG?</a></li>
+                <li class="nav-item" ><a href="#" class="nav-link">Quem somos nós?</a></li>
+                <li class="nav-item" ><a href="#" class="nav-link">Contato</a></li>
+              </ul>
+
+            </div>
+
+            <div class="menu" onclick="showSideContent()" >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+        </nav>
+
+    </header>
+
+        <aside>
+
+            <div id="side-content">
+
+              <ul>
+                <li class="item-side">item 1</li>
+                <li class="item-side">item 2</li>
+                <li class="item-side">item 3</li>
+                <li class="item-side">item 4</li>
+              </ul>
+
+                </div>
+        </aside>
+
+      <main>
+      </main>
+
+  </body>
+  <script src="{% static '/script/home.js'%}"></script>
+</html>
