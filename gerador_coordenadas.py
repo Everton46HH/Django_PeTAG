@@ -12,6 +12,7 @@ dados = {
     "longitude": -46.6333
 }
 
+
 for i in range(0,10000):
 
     time.sleep(5)
