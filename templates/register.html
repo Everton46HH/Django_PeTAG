@@ -3,16 +3,15 @@
 <html lang="pt-BR">
 
     <head>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login - PeTAG</title>
         <link rel="stylesheet" href="{% static '/css/register.css' %}">
+
     </head>
 
     <body> 
-        <div id="pegada">
-
-        </div> 
        
         <div class="container">
 
@@ -30,30 +29,30 @@
                             <form class="login-box" action="{% url 'register' %}" method="post"> {% csrf_token %}
 
                                 <label for="nome">Nome:</label>
-                                <input type="text" placeholder="Digite seu nome" required name="nome">
+                                <input type="text" placeholder="Digite seu nome"  name="nome">
 
                                 <label for="email">Email:</label>
-                                <input type="email" placeholder="Digite seu Email" required name="email">
+                                <input type="email" placeholder="Digite seu Email"  name="email">
                                 
                                 <label for="telefone">Telefone:</label>
-                                <input type="number" placeholder="Digite seu telefone" required name="telefone">
+                                <input type="number" placeholder="Digite seu telefone"  name="telefone">
                             
                                 <label for="senha">Senha:</label>
-                                <input type="password" placeholder="Digite sua Senha" required name="senha">    
+                                <input type="password" placeholder="Digite sua Senha"  name="senha">    
                                 
+                                <input type="submit" id="submit-button" value="CRIAR CONTA"></input>
+                             
+                            </form>
+                            
+                            <div id="error-messages">
+
                                 {% if messages %}
                                 {% for message in messages %}
                                 <p style="color: red;" id="p-message">{{ message }}</p>
                                 {% endfor %}
                                 {% endif %}
 
-                                <input type="submit" id="submit-button" value="CRIAR CONTA"></input>
-                             
-                                
-
-                                
-                            </form>
-                            
+                            </div>
                             
                         
                             <p class="cadastro">Já tem uma conta? <a href="{% url 'login' %}">Conecte-se</a></p>

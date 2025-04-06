@@ -1,7 +1,6 @@
 import requests
 import time
 
-# URL do seu backend Django
 # url = " https://9bb7-200-133-203-50.ngrok-free.app/usuario/receber_coordenadas"
 url = "http://127.0.0.1:8000/usuario/receber_coordenadas"
 

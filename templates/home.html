@@ -1,14 +1,18 @@
-{% load static %}
+<!-- {% load static %} -->
 <!DOCTYPE html>
 <html lang="pt-br">
-
+  
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    
     <link rel="stylesheet" href="{% static '/css/home.css' %}">
     <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-
+    
+    <!-- AREA DE TESTES LOCAIS -->
+    <!-- <link rel="stylesheet" href="/static/css/home.css"> -->
+    <!-- <script src="/static/script/home.js"></script> -->
+    
     <title>Portfólio</title>
   </head>
 <body>
@@ -31,12 +35,20 @@
 
             <div class="nav-list">
 
-              <ul>
+              <ul id="ul1">
+
                 <li class="nav-item" ><a href="#" class="nav-link">Oque é o projeto PeTAG?</a></li>
                 <li class="nav-item" ><a href="#" class="nav-link">Quem somos nós?</a></li>
                 <li class="nav-item" ><a href="#" class="nav-link">Contato</a></li>
+
               </ul>
 
+              <ul id="ul2">
+
+                <li class="nav-item" ><a href="#" class="nav-link">ENTRAR</li>
+                <li class="nav-item" ><a href="#" class="nav-link">CADASTRE-SE</li>
+  
+              </ul>
             </div>
 
             <div class="menu" onclick="showSideContent()" >

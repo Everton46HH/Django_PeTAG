@@ -12,11 +12,6 @@ body {
     align-items: center;
     background-color: #00d5ff;
     height: 100vh;
-    background-image:url();
-    background-repeat: no-repeat;
-    object-fit: cover;
-    background-size: cover;
-    background-position: center;
 }
 
 .container {
@@ -143,4 +138,16 @@ button:hover {
     background-color: #b0e57c;
     font-weight: 600;
     color: white;
+}
+
+
+#error-messages{
+    color: red;
+    height: 100px;
+    width: 100%;
+}
+
+
+*{
+    background-color: blue;
 }

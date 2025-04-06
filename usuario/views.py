@@ -34,10 +34,14 @@ def register(request):
 
             login(request)
 
-            return redirect("/usuario/login" , )
-    else:
-        form = RegisterForm()
+            return redirect("/usuario/login" , {"form": form})
+        else:
+            messages.error(request, "Nenhum campo pode ser vazio.")
+            form = RegisterForm()
 
+    else:
+        messages.error(request, "Tipo de requisição inválido.")
+        form = RegisterForm()
 
     return render(request,'register.html', {"form": form})
 
