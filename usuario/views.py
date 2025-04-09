@@ -91,47 +91,42 @@ def home(request):
 from django.http import JsonResponse
 
 
-class Dispositivo:
-    def __init__(self, latitude, longitude):
-        self.latitude = latitude
-        self.longitude = longitude
-
+# class Dispositivo:
+#     def __init__(self, latitude, longitude):
+#         self.latitude = latitude
+#         self.longitude = longitude
+import json
 def receber_coordenadas(request):
-    latitude = request.GET.get('latitude')
-    longitude = request.GET.get('longitude')
+    if request.method == "GET":
+        latitude = request.GET.get('latitude')
+        longitude = request.GET.get('longitude')
 
-    # dispositivo = Dispositivo(latitude, longitude)
+        if latitude and longitude:
+            print(f"[GET] Latitude: {latitude}, Longitude: {longitude}")
+            return JsonResponse({
+                "lat": latitude,
+                "long": longitude
+            })
+        else:
+            return render(request, 'receber_coordenadas.html')
 
-    # import geocoder
-    # from haversine import haversine, Unit
-    # notebook = geocoder.ip('me')
+    elif request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            latitude = data.get('latitude')
+            longitude = data.get('longitude')
 
-    # latitude_notebook = notebook.latlng[0]
-    # longitude_notebook = notebook.latlng[1]
+            print(f"[POST] Latitude: {latitude}, Longitude: {longitude}")
 
-    # coord_dispositivo = (dispositivo.latitude , dispositivo.longitude)
+            return JsonResponse({
+                "lat": latitude,
+                "long": longitude
+            })
 
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "JSON inválido"}, status=400)
 
-    # # distancia_metros = haversine((latitude_notebook,longitude_notebook), coord_dispositivo, unit=Unit.METERS)
-
-    # print(f"Latitude: {notebook.latlng[0]}, Longitude: {notebook.latlng[1]}")
-    # print(f"Latitude: {dispositivo.latitude},Longitude: {dispositivo.longitude}")
-
-    # # print(f"Distância entre os pontos: {distancia_metros:.2f} metros")
-
-    # # if distancia_metros > 100:
-
-    # #     print("ELE ESTA FORA DO RAIO")
-
-    # # else:
-    # #     print("TUDO CERTO")
-
-    print(f"Latitude: {latitude}, Longitude: {longitude}")
-
-    return JsonResponse({
-        "lat": latitude,
-        "long": longitude
-    })
+    return JsonResponse({"error": "Método não permitido"}, status=405)
 
 
 

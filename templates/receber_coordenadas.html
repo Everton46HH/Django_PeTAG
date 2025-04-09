@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Enviar Coordenadas</title>
+</head>
+<body>
+    <h1>Obtendo sua localização...</h1>
+
+    <script>
+        function enviarCoordenadas() {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        console.log("Latitude:", latitude);
+                        console.log("Longitude:", longitude);
+
+                        // Corrigido: crases para template literal e removido "//" duplicado
+                        const url = `http://127.0.0.1:8000/usuario/receber_coordenadas?latitude=${latitude}&longitude=${longitude}`;
+
+                        fetch(url)
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log("Resposta do servidor:", data);
+                                document.body.innerHTML += `<p>Latitude: ${data.lat}</p><p>Longitude: ${data.long}</p>`;
+                            })
+                            .catch(error => {
+                                console.error("Erro ao enviar coordenadas:", error);
+                                document.body.innerHTML += `<p>Erro ao enviar coordenadas</p>`;
+                            });
+                    },
+                    (error) => {
+                        console.error("Erro ao obter localização:", error);
+                        document.body.innerHTML += `<p>Erro ao obter localização</p>`;
+                    }
+                );
+            } else {
+                alert("Geolocalização não é suportada pelo seu navegador.");
+            }
+        }
+
+        // Executa ao carregar a página
+        window.onload = enviarCoordenadas;
+    </script>
+</body>
+</html>
